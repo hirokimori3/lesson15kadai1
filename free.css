@@ -1,0 +1,9 @@
+/* p要素の文字色(color)を赤(red)にする */
+p {
+    color: red;
+}
+
+/* h1要素のマージン(margin)を40pxにする */
+h1 {
+    margin: 40px;
+}

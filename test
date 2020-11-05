@@ -1,0 +1,22 @@
+データベース作成
+$ sed -e "/utf8/d" -e "/client/d" -e "/^\[mysqld_safe\]$/i character-set-server=utf8\n\n[client]\ndefault-character-set=utf8" /etc/my.cnf |sudo tee /etc/my.cnf
+$ sudo service mysqld start
+$ mysql -u root
+mysql> show variables like "chara%";
+mysql> CREATE DATABASE kadaidb;
+mysql> USE kadaidb;
+
+person.sql
+
+CREATE TABLE kadaidb.person(
+id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(50),
+age INT,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+mysql> source ~/environment/person.sql
+mysql> SHOW tables;
+mysql> DESCRIBE person;
+mysql> INSERT INTO kadaidb.person (name,age) VALUES("田中太郎",25);
+mysql> SELECT * FROM kadaidb.person;
